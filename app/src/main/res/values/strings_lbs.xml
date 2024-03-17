@@ -34,5 +34,6 @@
 
     <string name="oscillo_summary">BLE Waveform of received triaxial acceleration data.</string>
     <string name="received_summary">Real-time acceleration data. (Unit: g)</string>
+    <string name="received_gyr_summary">Real-time gyroscope data. (Unit: rad/s)</string>
 
 </resources>

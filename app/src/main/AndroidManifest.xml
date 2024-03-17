@@ -69,21 +69,18 @@
 	-->
 	<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
 
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+		android:maxSdkVersion="29"/>
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+		android:maxSdkVersion="32"/>
 
 	<uses-feature
 		android:name="android.hardware.bluetooth_le"
 		android:required="true"/>
 	<uses-sdk tools:overrideLibrary="androidx.core.splashscreen"/>
 
-	<queries>
-		<!-- Allow logging in nRF Logger. -->
-		<package android:name="no.studio.android.log" />
-	</queries>
-
 	<application
-		android:name="no.studio.android.BLERecorder.BLERecorderApplication"
+		android:name="nl.jonathanm.CreaTeBMERecorder.BLERecorderApplication"
 		android:allowBackup="true"
 		android:fullBackupContent="true"
 		android:icon="@mipmap/ic_launcher"
@@ -94,7 +91,7 @@
 		tools:ignore="GoogleAppIndexingWarning">
 
 		<activity
-			android:name="no.studio.android.BLERecorder.ScannerActivity"
+			android:name="nl.jonathanm.CreaTeBMERecorder.ScannerActivity"
 			android:theme="@style/AppTheme.SplashScreen"
 			android:launchMode="singleTop"
 			android:exported="true">
@@ -104,28 +101,10 @@
 			</intent-filter>
 		</activity>
 
-		<!--
-		 This activity alias is used to allow opening nRF Blinky from nRF Toolbox.
-		 This is not required if this feature is not desired.
-		 nRF Toolbox is displaying a different name and an icon, which are taken from this alias.
-		-->
-		<activity-alias
-			android:name="SplashScreenActivity"
-			android:targetActivity="no.studio.android.BLERecorder.ScannerActivity"
-			android:icon="@drawable/devices_icon"
-			android:label="@string/feature_name"
-			android:launchMode="singleTop"
-			android:exported="true">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN"/>
-				<category android:name="no.nordicsemi.android.nrftoolbox.LAUNCHER"/>
-			</intent-filter>
-		</activity-alias>
-
 		<activity
-			android:name="no.studio.android.BLERecorder.BLEDevicesActivity"
+			android:name="nl.jonathanm.CreaTeBMERecorder.BLEDevicesActivity"
 			android:launchMode="singleTop"
-			android:parentActivityName="no.studio.android.BLERecorder.ScannerActivity">
+			android:parentActivityName="nl.jonathanm.CreaTeBMERecorder.ScannerActivity">
 		</activity>
 		<provider
 			android:name="androidx.core.content.FileProvider"

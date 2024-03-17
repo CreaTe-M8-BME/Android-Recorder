@@ -25,7 +25,7 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".BLEDevicesActivity"
+	tools:context="nl.jonathanm.CreaTeBMERecorder.BLEDevicesActivity"
 	tools:ignore="ContentDescription">
 
 	<com.google.android.material.appbar.AppBarLayout
@@ -117,23 +117,35 @@
 					android:layout_width="match_parent"
 					android:layout_height="match_parent">
 
+
 					<com.google.android.material.textview.MaterialTextView
-						android:id="@+id/receive_data_z"
+						android:id="@+id/receive_data_summary"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:paddingStart="@dimen/activity_horizontal_margin"
+						android:paddingEnd="@dimen/activity_horizontal_margin"
+						android:text="@string/received_summary"
+						android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+						app:layout_constraintLeft_toLeftOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/receive_data_tool_bar" />
+
+					<com.google.android.material.textview.MaterialTextView
+						android:id="@+id/receive_data_acc_z"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:text="Z-axis"
+						android:text="Acc Z"
 						android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
 						android:textSize="16sp"
-						app:layout_constraintBaseline_toBaselineOf="@+id/receive_data_y"
+						app:layout_constraintBaseline_toBaselineOf="@+id/receive_data_acc_y"
 						app:layout_constraintEnd_toEndOf="@+id/tv_data_accelZ"
 						app:layout_constraintStart_toStartOf="@+id/tv_data_accelZ" />
 
 					<com.google.android.material.textview.MaterialTextView
-						android:id="@+id/receive_data_y"
+						android:id="@+id/receive_data_acc_y"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginTop="8dp"
-						android:text="Y-axis"
+						android:text="Acc Y"
 						android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
 						android:textSize="16sp"
 						app:layout_constraintBottom_toTopOf="@+id/tv_data_accelY"
@@ -142,15 +154,164 @@
 						app:layout_constraintTop_toBottomOf="@+id/receive_data_summary" />
 
 					<com.google.android.material.textview.MaterialTextView
-						android:id="@+id/receive_data_x"
+						android:id="@+id/receive_data_acc_x"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:text="X-axis"
+						android:text="Acc X"
 						android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
 						android:textSize="16sp"
-						app:layout_constraintBaseline_toBaselineOf="@+id/receive_data_y"
+						app:layout_constraintBaseline_toBaselineOf="@+id/receive_data_acc_y"
 						app:layout_constraintEnd_toEndOf="@+id/tv_data_accelX"
 						app:layout_constraintStart_toStartOf="@+id/tv_data_accelX" />
+
+
+					<com.google.android.material.textview.MaterialTextView
+						android:id="@+id/tv_data_accelZ"
+						android:layout_width="78dp"
+						android:layout_height="wrap_content"
+						android:ellipsize="end"
+						android:gravity="end"
+						android:singleLine="true"
+						android:text="0.000"
+						android:textAlignment="gravity"
+						android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+						android:textSize="26sp"
+						app:layout_constraintBaseline_toBaselineOf="@+id/tv_data_accelY"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toEndOf="@id/tv_data_accelY"
+						tools:text="-8.018" />
+
+					<com.google.android.material.textview.MaterialTextView
+						android:id="@+id/tv_data_accelY"
+						android:layout_width="78dp"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="16dp"
+						android:ellipsize="end"
+						android:gravity="end"
+						android:singleLine="true"
+						android:text="0.000"
+						android:textAlignment="gravity"
+						android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+						android:textSize="26sp"
+						app:layout_constraintBottom_toTopOf="@+id/receive_data_gyr_summary"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/receive_data_summary"
+						tools:text="-2.000" />
+
+					<com.google.android.material.textview.MaterialTextView
+						android:id="@+id/tv_data_accelX"
+						android:layout_width="78dp"
+						android:layout_height="wrap_content"
+						android:ellipsize="end"
+						android:gravity="end"
+						android:singleLine="true"
+						android:text="0.000"
+						android:textAlignment="gravity"
+						android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+						android:textSize="26sp"
+						app:layout_constraintBaseline_toBaselineOf="@+id/tv_data_accelY"
+						app:layout_constraintEnd_toStartOf="@id/tv_data_accelY"
+						app:layout_constraintStart_toStartOf="parent"
+						tools:text="-1.000" />
+
+
+					<com.google.android.material.textview.MaterialTextView
+						android:id="@+id/receive_data_gyr_summary"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:paddingStart="@dimen/activity_horizontal_margin"
+						android:paddingEnd="@dimen/activity_horizontal_margin"
+						android:text="@string/received_gyr_summary"
+						android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+						app:layout_constraintLeft_toLeftOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/tv_data_accelX" />
+
+					<com.google.android.material.textview.MaterialTextView
+						android:id="@+id/receive_data_gyr_z"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="Gyr Z"
+						android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+						android:textSize="16sp"
+						app:layout_constraintBaseline_toBaselineOf="@+id/receive_data_gyr_y"
+						app:layout_constraintEnd_toEndOf="@+id/tv_data_gyroZ"
+						app:layout_constraintStart_toStartOf="@+id/tv_data_gyroZ" />
+
+					<com.google.android.material.textview.MaterialTextView
+						android:id="@+id/receive_data_gyr_y"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="8dp"
+						android:text="Gyr Y"
+						android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+						android:textSize="16sp"
+						app:layout_constraintBottom_toTopOf="@+id/tv_data_gyroY"
+						app:layout_constraintEnd_toEndOf="@+id/tv_data_gyroY"
+						app:layout_constraintStart_toStartOf="@+id/tv_data_gyroY"
+						app:layout_constraintTop_toBottomOf="@+id/receive_data_gyr_summary" />
+
+					<com.google.android.material.textview.MaterialTextView
+						android:id="@+id/receive_data_gyr_x"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="Gyr X"
+						android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+						android:textSize="16sp"
+						app:layout_constraintBaseline_toBaselineOf="@+id/receive_data_gyr_y"
+						app:layout_constraintEnd_toEndOf="@+id/tv_data_gyroX"
+						app:layout_constraintStart_toStartOf="@+id/tv_data_gyroX" />
+
+
+					<com.google.android.material.textview.MaterialTextView
+						android:id="@+id/tv_data_gyroZ"
+						android:layout_width="78dp"
+						android:layout_height="wrap_content"
+						android:ellipsize="end"
+						android:gravity="end"
+						android:singleLine="true"
+						android:text="0.000"
+						android:textAlignment="gravity"
+						android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+						android:textSize="26sp"
+						app:layout_constraintBaseline_toBaselineOf="@+id/tv_data_gyroY"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toEndOf="@id/tv_data_gyroY"
+						tools:text="-8.018" />
+
+					<com.google.android.material.textview.MaterialTextView
+						android:id="@+id/tv_data_gyroY"
+						android:layout_width="78dp"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="16dp"
+						android:ellipsize="end"
+						android:gravity="end"
+						android:singleLine="true"
+						android:text="0.000"
+						android:textAlignment="gravity"
+						android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+						android:textSize="26sp"
+						app:layout_constraintBottom_toTopOf="@+id/tv_data_hex"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/receive_data_gyr_summary"
+						tools:text="-2.000" />
+
+					<com.google.android.material.textview.MaterialTextView
+						android:id="@+id/tv_data_gyroX"
+						android:layout_width="78dp"
+						android:layout_height="wrap_content"
+						android:ellipsize="end"
+						android:gravity="end"
+						android:singleLine="true"
+						android:text="0.000"
+						android:textAlignment="gravity"
+						android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+						android:textSize="26sp"
+						app:layout_constraintBaseline_toBaselineOf="@+id/tv_data_gyroY"
+						app:layout_constraintEnd_toStartOf="@id/tv_data_gyroY"
+						app:layout_constraintStart_toStartOf="parent"
+						tools:text="-1.000" />
 
 					<com.google.android.material.textview.MaterialTextView
 						android:id="@+id/tv_data_timestamp"
@@ -172,58 +333,9 @@
 						app:layout_constraintBottom_toTopOf="@+id/btn_save"
 						app:layout_constraintEnd_toEndOf="parent"
 						app:layout_constraintStart_toStartOf="parent"
-						app:layout_constraintTop_toBottomOf="@+id/tv_data_accelY"
+						app:layout_constraintTop_toBottomOf="@+id/tv_data_gyroY"
 						tools:text="AA FF F1 06 08 00 1C 00 C4 03 7F 58" />
 
-					<com.google.android.material.textview.MaterialTextView
-						android:id="@+id/tv_data_accelZ"
-						android:layout_width="78dp"
-						android:layout_height="wrap_content"
-						android:ellipsize="end"
-						android:singleLine="true"
-						android:textAlignment="gravity"
-						android:gravity="end"
-						android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-						android:textSize="26sp"
-						android:text="0.000"
-						app:layout_constraintBaseline_toBaselineOf="@+id/tv_data_accelY"
-						app:layout_constraintEnd_toEndOf="parent"
-						app:layout_constraintStart_toEndOf="@id/tv_data_accelY"
-						tools:text="-8.018" />
-
-					<com.google.android.material.textview.MaterialTextView
-						android:id="@+id/tv_data_accelY"
-						android:layout_width="78dp"
-						android:layout_height="wrap_content"
-						android:layout_marginTop="16dp"
-						android:ellipsize="end"
-						android:gravity="end"
-						android:singleLine="true"
-						android:text="0.000"
-						android:textAlignment="gravity"
-						android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-						android:textSize="26sp"
-						app:layout_constraintBottom_toTopOf="@+id/tv_data_hex"
-						app:layout_constraintEnd_toEndOf="parent"
-						app:layout_constraintStart_toStartOf="parent"
-						app:layout_constraintTop_toBottomOf="@+id/receive_data_summary"
-						tools:text="-2.000" />
-
-					<com.google.android.material.textview.MaterialTextView
-						android:id="@+id/tv_data_accelX"
-						android:layout_width="78dp"
-						android:layout_height="wrap_content"
-						android:ellipsize="end"
-						android:singleLine="true"
-						android:textAlignment="gravity"
-						android:gravity="end"
-						android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-						android:textSize="26sp"
-						android:text="0.000"
-						app:layout_constraintBaseline_toBaselineOf="@+id/tv_data_accelY"
-						app:layout_constraintStart_toStartOf="parent"
-						app:layout_constraintEnd_toStartOf="@id/tv_data_accelY"
-						tools:text="-1.000" />
 
 					<com.google.android.material.appbar.MaterialToolbar
 						android:id="@+id/receive_data_tool_bar"
@@ -235,17 +347,6 @@
 						app:logo="@drawable/ic_toolbar_record"
 						app:title="@string/title_accel_data"
 						app:titleMarginStart="@dimen/toolbar_title_margin" />
-
-					<com.google.android.material.textview.MaterialTextView
-						android:id="@+id/receive_data_summary"
-						android:layout_width="0dp"
-						android:layout_height="wrap_content"
-						android:paddingStart="@dimen/activity_horizontal_margin"
-						android:paddingEnd="@dimen/activity_horizontal_margin"
-						android:text="@string/received_summary"
-						android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-						app:layout_constraintLeft_toLeftOf="parent"
-						app:layout_constraintTop_toBottomOf="@+id/receive_data_tool_bar" />
 
 					<com.google.android.material.switchmaterial.SwitchMaterial
 						android:id="@+id/record_switch"
@@ -281,7 +382,7 @@
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:orientation="horizontal"
-						app:layout_constraintGuide_begin="255dp" />
+						app:layout_constraintGuide_begin="280dp" />
 
 
 				</androidx.constraintlayout.widget.ConstraintLayout>

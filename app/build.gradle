@@ -2,15 +2,15 @@ apply plugin: 'com.android.application'
 apply from: rootProject.file("gradle/git-tag-version.gradle")
 
 android {
-    compileSdkVersion 31
+    compileSdk 34
 
     defaultConfig {
-        applicationId "no.studio.android.blerecorder"
+        applicationId "nl.jonathanm.CreaTeBMERecorder"
         minSdkVersion 21
-        targetSdkVersion 31
-        versionCode getVersionCodeFromTags()
+        targetSdk 34
+        versionCode 5
         versionName "1.0"
-        resConfigs 'en'
+        resourceConfigurations += ['en']
 
         vectorDrawables.useSupportLibrary = true
     }
@@ -39,19 +39,19 @@ android {
             signingConfig signingConfigs.release
         }
     }
-    namespace 'no.studio.android.BLERecorder'
+    namespace 'nl.jonathanm.CreaTeBMERecorder'
 }
 
 dependencies {
-    implementation 'androidx.activity:activity:1.4.0'
-    implementation 'androidx.fragment:fragment:1.4.1'
-    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.activity:activity:1.8.2'
+    implementation 'androidx.fragment:fragment:1.6.2'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.4.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.core:core-splashscreen:1.0.1'
+    implementation 'com.google.android.material:material:1.11.0'
 
     // Brings the new BluetoothLeScanner API to older platforms
     implementation 'no.nordicsemi.android.support.v18:scanner:1.6.0'
@@ -60,7 +60,7 @@ dependencies {
     implementation 'no.nordicsemi.android:log:2.3.0'
 
     // BLE library
-    implementation 'no.nordicsemi.android:ble-livedata:2.4.0'
+    implementation 'no.nordicsemi.android:ble-livedata:2.7.3'
 
     // GraphView
     implementation 'com.jjoe64:graphview:4.2.2'

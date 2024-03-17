@@ -21,7 +21,7 @@
   -->
 
 <resources>
-	<string name="app_name">BLE Recorder</string>
+	<string name="app_name">CreaTeBME Recorder</string>
 	<string name="feature_name">RECORDER</string>
     <string name="textview_x">X:</string>
 </resources>
