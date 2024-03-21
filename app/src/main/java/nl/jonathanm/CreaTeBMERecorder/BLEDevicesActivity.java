@@ -52,6 +52,7 @@ import nl.jonathanm.CreaTeBMERecorder.adapter.DiscoveredBluetoothDevice;
 import nl.jonathanm.CreaTeBMERecorder.databinding.PickleBleActivityBinding;
 import nl.jonathanm.CreaTeBMERecorder.viewmodels.BLEDataViewModel;
 import nl.jonathanm.CreaTeBMERecorder.profile.BLEManager;
+import no.nordicsemi.android.log.LogContract;
 
 public class BLEDevicesActivity extends AppCompatActivity {
 	public static final String EXTRA_DEVICE = "cn.ergonomics.android.ble.EXTRA_DEVICE";
@@ -133,7 +134,7 @@ public class BLEDevicesActivity extends AppCompatActivity {
 			}
 		});
 		viewModel.getAccelData().observe(this,accelData ->{
-			double[] accel = new double[3];
+			double[] accel = new double[6];
 			accel[0] = accelData.getIntValue(Data.FORMAT_SINT16_LE,0)/1000.0f;
 			accel[1] = accelData.getIntValue(Data.FORMAT_SINT16_LE,2)/1000.0f;
 			accel[2] = accelData.getIntValue(Data.FORMAT_SINT16_LE,4)/1000.0f;
@@ -143,6 +144,9 @@ public class BLEDevicesActivity extends AppCompatActivity {
 			binding.tvDataAccelX.setText(String.format("%.3f",accel[0]));
 			binding.tvDataAccelY.setText(String.format("%.3f",accel[1]));
 			binding.tvDataAccelZ.setText(String.format("%.3f",accel[2]));
+			binding.tvDataGyroX.setText(String.format("%.3f",accel[3]));
+			binding.tvDataGyroY.setText(String.format("%.3f",accel[4]));
+			binding.tvDataGyroZ.setText(String.format("%.3f",accel[5]));
 			binding.tvDataHex.setText(toString(accelData));
 			binding.tvDataTimestamp.setText(new SimpleDateFormat("HH:mm:ss.SSS").format(new Date(System.currentTimeMillis())));
 			realtimeGraph(accel);

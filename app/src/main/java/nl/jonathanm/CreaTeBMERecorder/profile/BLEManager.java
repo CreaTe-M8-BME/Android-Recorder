@@ -143,7 +143,7 @@ public class BLEManager extends ObservableBleManager {
 				if (fileRecord.exists()) {
 					try {
 						fileOutputStream = new FileOutputStream(fileRecord,true);
-						fileOutputStream.write((String.format("%.3f,", mAccX) + String.format("%.3f,", mAccY) + String.format("%.3f,", mAccZ) + String.format("%.3f,", mGyrX) + String.format("%.3f,", mGyrY) + String.format("%.3f,", mGyrZ) + "\r\n").getBytes(StandardCharsets.UTF_8));
+						fileOutputStream.write((String.format("%.3f,", mAccX) + String.format("%.3f,", mAccY) + String.format("%.3f,", mAccZ) + String.format("%.3f,", mGyrX) + String.format("%.3f,", mGyrY) + String.format("%.3f", mGyrZ) + "\r\n").getBytes(StandardCharsets.UTF_8));
 					} catch (IOException e) {
 						e.printStackTrace();
 					} finally {
@@ -267,7 +267,7 @@ public class BLEManager extends ObservableBleManager {
 			}
 			try {
 				FileOutputStream fileOutputStream = new FileOutputStream(fileRecord);
-				fileOutputStream.write("X Accel,Y Accel,Z Accel,\r\n".getBytes(StandardCharsets.UTF_8));
+				fileOutputStream.write("X Accel,Y Accel,Z Accel,X Gyro, Y Gyro, Z Gyro\r\n".getBytes(StandardCharsets.UTF_8));
 				log(Log.WARN, "fileRecord write success. " + fileRecord);
 			} catch (IOException e) {
 				e.printStackTrace();
